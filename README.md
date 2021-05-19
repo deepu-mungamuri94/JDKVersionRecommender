@@ -1,8 +1,9 @@
 # JDKVersionRecommender
 
 This project compares Host machines JDK version with JDK Versions available in [ZULU](https://app.swaggerhub.com/apis-docs/azul/zulu-download-community/1.0#/bundles/get_bundles_) and recommends latest JDK versions compatible for host machine.
-
-### Executable Instructions:
+<br/>
+<br/>
+<h2>Executable Instructions:</h2>
 We can execute the app using following options:
 <ul>
 	<li>Jar Execution
@@ -24,8 +25,8 @@ We can execute the app using following options:
 		</ul>
 	</li>
 </ul>
-
-### Output
+<br/>
+<h2>Output</h2>
 <ul>
 	<li>This will provide us the debug informations:
 		<ul>
