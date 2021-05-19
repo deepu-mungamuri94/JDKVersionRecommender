@@ -14,6 +14,10 @@ public class ZuluBundle {
 		return this.url;
 	}
 	
+	/**
+	 * Preparing readable JDKVersion that we have received from ZULU API
+	 * @return String
+	 */
 	public String getJDKVersionAsReadable() {
 		StringBuilder out = new StringBuilder();
 		for(int i=0; i<jdkVersion.length; i++) {
@@ -25,6 +29,11 @@ public class ZuluBundle {
 		return out.toString();
 	}
 	
+	/**
+	 * This returns true: if systemJDKVersion is older than ZULU JDK version & false otherwise
+	 * @param systemJDKVersion
+	 * @return true/false
+	 */
 	public boolean isnewVersion(int[] systemJDKVersion) {
 		if(systemJDKVersion == null || systemJDKVersion.length == 0) {
 			return true;
@@ -44,6 +53,6 @@ public class ZuluBundle {
 			index ++;
 		}
 		
-		return true;
+		return false;
 	}
 }

@@ -26,6 +26,12 @@ public class ZuluService {
 		return _instance;
 	}
 	
+	/**
+	 * Fetches all Bundles available using zulu API by using query parameters(os,arch,fileExtension)
+	 * @param fileExtension 
+	 * @return List<ZuluBundle>
+	 * @throws Exception
+	 */
 	public List<ZuluBundle> getZuluBundles(String fileExtension) throws Exception {
 		
 		StringBuilder url = new StringBuilder(zuluBundlesAPIURL);
@@ -61,6 +67,13 @@ public class ZuluService {
 		return prepareZuluBundlesFromResponse(responseContent.toString());
 	}
 	
+	
+	/**
+	 * Prepares ZuluBundle models(data/pojo) list from zulu bundles API response
+	 * @param response
+	 * @return List<ZuluBundle>
+	 * @throws JSONException
+	 */
 	private List<ZuluBundle> prepareZuluBundlesFromResponse(String response) throws JSONException {
 		List<ZuluBundle> zuluBundles = new ArrayList<>();
 		if(response == null || response.isEmpty()) {
