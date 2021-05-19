@@ -34,7 +34,7 @@ public class Main {
 	 */
 	private static void showUpdatableBundles(int[] hostJavaVersionElements, List<ZuluBundle> bundles) {
 		if(bundles == null || bundles.size() == 0) {
-			System.out.println("\nNo updates found");
+			System.out.println("\n\n[ DONE ] No updates found\n");
 			return;
 		}
 		
