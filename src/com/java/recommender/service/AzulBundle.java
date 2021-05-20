@@ -1,11 +1,11 @@
 package com.java.recommender.service;
 
-public class ZuluBundle {
+public class AzulBundle {
 	
 	private String url;
 	private int[] jdkVersion;
 	
-	public ZuluBundle(String url, int[] jdkVersion) {
+	public AzulBundle(String url, int[] jdkVersion) {
 		this.url = url;
 		this.jdkVersion = jdkVersion;
 	}
@@ -15,7 +15,7 @@ public class ZuluBundle {
 	}
 	
 	/**
-	 * Preparing readable JDKVersion that we have received from ZULU API
+	 * Preparing readable JDKVersion that we have received from Azul API
 	 * @return String
 	 */
 	public String getJDKVersionAsReadable() {
@@ -30,7 +30,7 @@ public class ZuluBundle {
 	}
 	
 	/**
-	 * This returns true: if systemJDKVersion is older than ZULU JDK version & false otherwise
+	 * This returns true: if systemJDKVersion is older than Azul JDK version & false otherwise
 	 * @param systemJDKVersion
 	 * @return true/false
 	 */

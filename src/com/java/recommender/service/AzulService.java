@@ -11,30 +11,30 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ZuluService {
+public class AzulService {
 	
-	private static String zuluBundlesAPIURL = "https://api.azul.com/zulu/download/community/v1.0/bundles?bundle_type=jdk";
+	private static String azulBundlesAPIURL = "https://api.azul.com/zulu/download/community/v1.0/bundles?bundle_type=jdk";
 	
-	private static ZuluService _instance = null;
-	private ZuluService() {}
+	private static AzulService _instance = null;
+	private AzulService() {}
 	
 	// Singleton
-	public synchronized static ZuluService getInstance() {
+	public synchronized static AzulService getInstance() {
 		if(_instance == null) {
-			_instance = new ZuluService();
+			_instance = new AzulService();
 		}
 		return _instance;
 	}
 	
 	/**
-	 * Fetches all Bundles available using zulu API by using query parameters(os,arch,fileExtension)
+	 * Fetches all Bundles available using Azul API by using query parameters(os,arch,fileExtension)
 	 * @param fileExtension 
-	 * @return List<ZuluBundle>
+	 * @return List<AzulBundle>
 	 * @throws Exception
 	 */
-	public List<ZuluBundle> getZuluBundles(String fileExtension) throws Exception {
+	public List<AzulBundle> getAzulBundles(String fileExtension) throws Exception {
 		
-		StringBuilder url = new StringBuilder(zuluBundlesAPIURL);
+		StringBuilder url = new StringBuilder(azulBundlesAPIURL);
 		String os = UtilityService.getOSQueryString();
 		String arch = UtilityService.getOSArch();
 		if(os != null) {
@@ -48,7 +48,7 @@ public class ZuluService {
 		}
 		
 		// 1. Initiate Connection
-		System.out.println("\nRequesting bundles from zulu: " + url);
+		System.out.println("\nRequesting bundles from Azul: " + url);
 		URL urlObj = new URL(url.toString());
 		HttpURLConnection connection = (HttpURLConnection) urlObj.openConnection();
 		connection.setRequestMethod("GET");
@@ -63,21 +63,21 @@ public class ZuluService {
 			}
 		}
 		
-		// 3. Return zulu Bundles prepared
-		return prepareZuluBundlesFromResponse(responseContent.toString());
+		// 3. Return Azul Bundles prepared
+		return prepareAzulBundlesFromResponse(responseContent.toString());
 	}
 	
 	
 	/**
-	 * Prepares ZuluBundle models(data/pojo) list from zulu bundles API response
+	 * Prepares AzulBundle models(data/pojo) list from Azul bundles API response
 	 * @param response
-	 * @return List<ZuluBundle>
+	 * @return List<AzulBundle>
 	 * @throws JSONException
 	 */
-	private List<ZuluBundle> prepareZuluBundlesFromResponse(String response) throws JSONException {
-		List<ZuluBundle> zuluBundles = new ArrayList<>();
+	private List<AzulBundle> prepareAzulBundlesFromResponse(String response) throws JSONException {
+		List<AzulBundle> azulBundles = new ArrayList<>();
 		if(response == null || response.isEmpty()) {
-			return zuluBundles;
+			return azulBundles;
 		}
 		
 		JSONArray responseJSONArray = new JSONArray(response);
@@ -92,10 +92,10 @@ public class ZuluService {
 				versionElements[j] = jdkVersionArrayElements.getInt(j);
 			}
 			
-			zuluBundles.add(new ZuluBundle(downloadURL, versionElements));
+			azulBundles.add(new AzulBundle(downloadURL, versionElements));
 		}
 		
-		return zuluBundles;
+		return azulBundles;
 	}
 
 }
